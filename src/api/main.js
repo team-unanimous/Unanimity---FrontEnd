@@ -13,7 +13,7 @@ const apis = {
     //meeting room
     postMeetingroom: (data) => api.post(`api/chat/meetings/${data.meetingId}/rooms`, data),
     getTeamMain: ({ teamId }) => api.get(`/api/teams/${teamId}`), // 팀 메인 게시판
-    patchTeamImage: (data) => api.patch(`/api/teams/${data.teamId}/teamImage`, data), //팀 이미지 수정
+    patchTeamImage: (data) => api.patch(`/api/teams/${data.teamId}/teamImage`, data.teamImage), //팀 이미지 수정
     patchTeamNick: (data) => api.patch(`/api/teams/${data.teamId}`, data), // 팀 닉네임 수정
     patchMeetProfile: (data) => api.patch(`/api/meetings/${data.meetId}`, data), // 미팅 프로필 수정
     deleteMeet: (data) => api.delete(`/api/meetings/${data.meetingId}`), // 미팅 삭제

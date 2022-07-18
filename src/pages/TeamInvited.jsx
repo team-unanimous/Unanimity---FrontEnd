@@ -12,6 +12,7 @@ const TeamInvited = () => {
     const [teamData, setTeamData] = useState(null);
     const [teamName, setTeamName] = useState(null);
     const [UUID, setUUID] = useState('');
+    const [image, setImage] = useState(null);
 
     const findUUID = async (UUIDInfo) => {
         return apis.postInviteTeam(UUIDInfo);
@@ -31,10 +32,12 @@ const TeamInvited = () => {
             //     setWarning(true);    
             // }
             console.log(resp, "성공");
+            console.log(resp.data.teamImage)
             setTeamName(resp.data.teamname);
             setUUID(resp.data.uuid);
             setWarning(false);
             setTeamData(true);
+            setImage(resp.data.teamImage)
         },
         onError: (data) => {
             console.log(data, "error")
@@ -98,9 +101,8 @@ const TeamInvited = () => {
                         ? <StTeamBox>
                             <StTeamDataBox>
                                 <StTeamDataWrapper>
-                                    <StTeamProfileImg>
+                                    <StTeamProfileImg src={image}>
                                         {/* <img src={data?.data?.teamImage}></img> */}
-
                                     </StTeamProfileImg>
                                     <StTeamTitleDiv>
                                         {/* {data?.data?.teamname} */}
@@ -126,9 +128,9 @@ const TeamInvited = () => {
                                 <StTeamJoinButton onClick={teamJoinHandler}>
                                     입장하기
                                 </StTeamJoinButton>
-                                </StTeamDataBox>
-                            </StTeamBox>
-                            :<></>} 
+                            </StTeamDataBox>
+                        </StTeamBox>
+                        : <></>}
                 </StContainer>
             </StBox>
         </>
@@ -315,7 +317,7 @@ const StTeamJoinButton = styled.div`
     flex-grow: 0;
     cursor: pointer;
 `
-const StTeamProfileImg = styled.div`
+const StTeamProfileImg = styled.img`
     background-color: #000;
     /* Rectangle 151 */
     width: 180px;
@@ -323,6 +325,7 @@ const StTeamProfileImg = styled.div`
 
     background: #F1F1F1;
     border-radius: 87px;
+    object-fit: cover;
 `
 const StTeamTitleDiv = styled.div`
     /* background-color: black; */

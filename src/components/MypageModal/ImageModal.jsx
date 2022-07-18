@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import cancel from "../../img/cancel.png"
 
-const ImageModal = ({ open, close, select, defaultimage, plus }) => {
+const ImageModal = ({ open, close, select, save }) => {
     return (
         <>
             {open ?
@@ -25,8 +25,8 @@ const ImageModal = ({ open, close, select, defaultimage, plus }) => {
                                 accept='img/*'
                                 onChange={select} />
                             <StWhiteBox>
-                                <StBlackTitle onClick={defaultimage}>
-                                    기본 이미지
+                                <StBlackTitle onClick={save}>
+                                    이미지 저장
                                 </StBlackTitle>
                             </StWhiteBox>
                         </Stbtns>

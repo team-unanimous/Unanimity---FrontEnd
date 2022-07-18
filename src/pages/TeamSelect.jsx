@@ -14,6 +14,7 @@ const TeamSelect = () => {
     }
     const { mutate: joinMutate } = useMutation(teamJoin, {
         onSuccess: (data) => {
+            console.log(data)
             console.log(data.data);
             () => navigate('/teamboard/1')
         },
@@ -31,6 +32,7 @@ const TeamSelect = () => {
     }
 
     const { data } = useGetTeamInfo();
+    console.log()
 
     if (!data) {
         return <>Something wrong!</>
@@ -49,13 +51,13 @@ const TeamSelect = () => {
                     <StTeamBox>
                         {data.map((team) => (
                             <>
-                                <StTeamItemBox>
+                                <StTeamItemBox >
                                     <StTeamItem
                                         key={team.teamId}
                                         className="team-title"
                                         onClick={() => { navigate(`/teamboard/${team.teamId}`) }}
+                                        src={{ data }.data[0].teamImage}
                                     >
-                                        {/* <img src={`${team.teamImage}`}></img> */}
                                     </StTeamItem>
                                     <StTeamName>
                                         {team.teamname}

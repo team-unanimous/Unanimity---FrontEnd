@@ -89,8 +89,6 @@ const Mypage = () => {
         fileReader.readAsDataURL(file)
         fileReader.onload = (e) => setLoadimg(e.target.result)
         // 이미지 업로드 비동기 문제발생
-        picturePostFunction()
-        ImgModalCancel()
     }
 
 
@@ -105,10 +103,12 @@ const Mypage = () => {
     const formData = new FormData();
     formData.append('profileImage', files)
     // 사진 값보기
-    // for (var value of formData.values()) {
+    // for (let key of formData.keys()) {
+    //     console.log(key);
+    // }
+    // for (let value of formData.values()) {
     //     console.log(value);
     // }
-    // console.log(formData)
 
     // 이미지 전송
     // FormData() 새로운 FormData 객체를 생성
@@ -194,6 +194,7 @@ const Mypage = () => {
 
     // 비밀번호 변경모달로 이동
     const passwordPost = (data) => {
+        console.log(data)
         return apis.postPasswordChange(data)
             .then((response) => {
                 // response.data
@@ -215,7 +216,6 @@ const Mypage = () => {
             // alert("비밀번호를 틀리셨습니다")
         }
     })
-
     const posswordPostFunction = () => {
         passwordGo({
             password: password,
@@ -243,9 +243,8 @@ const Mypage = () => {
             <ImageModal
                 open={imgmodalopen}
                 select={onLoadFile}
-                defaultimage={defaultFile}
                 close={ImgModalCancel}
-                plus={exfunction}
+                save={exfunction}
             />
             <NickNameModal
                 open={nicknamemodalopen}

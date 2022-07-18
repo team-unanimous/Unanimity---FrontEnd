@@ -54,7 +54,6 @@ const SignUpTwo = () => {
       })
       .catch((error) => {
         console.log(error)
-        console.log(error.response)
         setWarningmsg(true)
         alert("이메일 생성에 실패했습니다")
       })
